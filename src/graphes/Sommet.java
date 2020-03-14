@@ -16,7 +16,6 @@ public class Sommet {
         this.name = name;
         this.x = x;
         this.y = y;
-        listSommet.add(this);
     }
 
     public void displaySommet(mxGraph graph, Object parent) {
