@@ -6,6 +6,8 @@ import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
+
+import java.util.ArrayList;
 import java.util.regex.*;
 
 public class JGraph extends JFrame {
@@ -19,11 +21,25 @@ public class JGraph extends JFrame {
         mxGraph graph = new mxGraph();
         Object parent = graph.getDefaultParent();
 
+        Arc.listArc = new ArrayList<>();
+        Sommet.listSommet = new ArrayList<>();
+
+        Sommet s1 = new Sommet("s1", 20, 20);
+        Sommet s2 = new Sommet("s2", 200, 200);
+        Sommet s3 = new Sommet("s3", 100, 200);
+
+        Arc a1 = new Arc(s1, s2, 5);
+        Arc a2 = new Arc(s2, s3, 5);
+
+
         graph.getModel().beginUpdate();
         try {
-            Object v1 = graph.insertVertex(parent, null, "Hello", 20, 20, 80, 30);
-            Object v2 = graph.insertVertex(parent, null, "World!", 240, 150, 80, 30);
-            graph.insertEdge(parent, null, "Edge", v1, v2);
+            for (Sommet s : Sommet.listSommet) {
+                s.displaySommet(graph, parent);
+            }
+            for (Arc a : Arc.listArc) {
+                a.displayArc(graph, parent);
+            }
         } finally {
             graph.getModel().endUpdate();
         }
@@ -31,4 +47,5 @@ public class JGraph extends JFrame {
         mxGraphComponent graphComponent = new mxGraphComponent(graph);
         getContentPane().add(graphComponent);
     }
+
 }
