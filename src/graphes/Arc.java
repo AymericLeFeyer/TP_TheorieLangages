@@ -1,8 +1,6 @@
 package graphes;
 
-import com.mxgraph.util.mxConstants;
 import com.mxgraph.view.mxGraph;
-import com.mxgraph.swing.mxGraphComponent;
 
 
 import java.util.List;

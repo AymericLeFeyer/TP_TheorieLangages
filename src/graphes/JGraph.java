@@ -20,15 +20,16 @@ public class JGraph extends JFrame {
     public JGraph() throws Exception {
         super("TP THEORIE LANGAGES");
 
+        // Creation du graphe
         mxGraph graph = new mxGraph();
         Object parent = graph.getDefaultParent();
 
-//        Importation des informations
+        // Importation des informations
         importGraph();
 
         graph.getModel().beginUpdate();
         try {
-//            Affichage du graphe
+//          Affichage du graphe
             displayGraph(graph, parent);
         } finally {
             graph.getModel().endUpdate();
@@ -70,14 +71,14 @@ public class JGraph extends JFrame {
         Pattern chiffre = Pattern.compile("^[0-9]+$");
         Matcher m;
 
+        // On parcours tant que le fichier n'est pas fini
         while (sc.hasNextLine()) {
             arcExiste = false;
             arc2 = false;
             String line = sc.nextLine();
+            String[] result = line.split(" ");
             if (lineNumber == 1) {
 //              Lecture des sommets
-                String[] result = line.split(" ");
-
                 if (result[0].equals("sommets")) {
                     for (int i = 1; i < result.length; i++) {
 //                      Pour chaque mot
@@ -94,7 +95,6 @@ public class JGraph extends JFrame {
                 }
             } else {
 //                Lecture des arcs
-                String[] result = line.split(" ");
                 if (result.length == 4) {
                     m = chiffre.matcher(result[3]);
                     if (!m.find()) throw new Exception("La valeur finale n'est pas un entier ! : " + result[3]);
@@ -128,14 +128,7 @@ public class JGraph extends JFrame {
                 } else throw new Exception("Probleme de parametre sur l'arc de la ligne : " + lineNumber);
 
             }
-//
-
-
             lineNumber++;
-
         }
-
-
     }
-
 }
