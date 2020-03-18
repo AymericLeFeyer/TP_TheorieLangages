@@ -1,6 +1,8 @@
-sommets s1 s2 s3
+sommets s1 s2 s3 s4 s5
 arc s1 s2 5
 arc s1 s3 3
 arc s2 s2 0
 arc s2 s3 2
-arc s2 s1 10
+arc s3 s4 8
+arc s5 s4 2
+arc s5 s2 14

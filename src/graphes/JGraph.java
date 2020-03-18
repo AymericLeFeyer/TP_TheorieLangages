@@ -126,7 +126,6 @@ public class JGraph extends JFrame {
 
                     } else throw new Exception("Probleme sur le premier mot " + result[0]);
                 } else throw new Exception("Probleme de parametre sur l'arc de la ligne : " + lineNumber);
-
             }
             lineNumber++;
         }
